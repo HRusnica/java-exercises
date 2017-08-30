@@ -10,7 +10,8 @@ public class AfternoonExercises {
 	 sleepIn(false, true) → true
 	 */
 	public boolean sleepIn(boolean weekday, boolean vacation) {
-		return false;
+		return (vacation || !weekday);
+			
 	}
 
 	/*
@@ -22,7 +23,8 @@ public class AfternoonExercises {
 	 monkeyTrouble(true, false) → false
 	 */
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-		return false;
+		return (aSmile == bSmile);
+		
 	}
 	
 	/*
@@ -32,7 +34,12 @@ public class AfternoonExercises {
 	 sumDouble(2, 2) → 8
 	 */
 	public int sumDouble(int a, int b) {
-		return 0;
+		if (a != b) {
+			return a+b;
+		} else {
+			return 2*(a + b);
+		}
+		
 	}
 
 	/*
@@ -45,7 +52,12 @@ public class AfternoonExercises {
 	 diff21(-10) → 31
 	 */
 	public int diff21(int n) {
-		return 0;
+		if (n <= 21) {
+			return 21 - n;
+		} else {
+			return 2 * (n-21);
+		}
+		
 	}
 
 	/*
@@ -57,8 +69,9 @@ public class AfternoonExercises {
 	 parrotTrouble(false, 6) → false
 	 */
 	public boolean parrotTrouble(boolean talking, int hour) {
-		return false;
+		return (talking && (hour < 7 || hour > 20));
 	}
+	
 
 	/*
 	 6. Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10.
@@ -67,7 +80,7 @@ public class AfternoonExercises {
 	 makes10(1, 9) → true
 	 */
 	public boolean makes10(int a, int b) {
-		return false;
+		return ((a == 10 || b == 10) || (a + b == 10));
 	}
 
 	/*
@@ -78,7 +91,10 @@ public class AfternoonExercises {
 	 posNeg(-4, -5, true) → true
 	 */
 	public boolean posNeg(int a, int b, boolean negative) {
-		return false;
+		 if (negative) { return (a < 0 && b < 0);
+		 } else {
+		 return ((a > 0 && b < 0) || (a < 0 && b > 0));
+				 }
 	}
 
 	/*
@@ -89,7 +105,8 @@ public class AfternoonExercises {
 	 or35(8) → false
 	 */
 	public boolean or35(int n) {
-		return false;
+		return (n % 3 == 0 || n % 5 == 0);
+		
 	}
 
 	/*
@@ -99,7 +116,8 @@ public class AfternoonExercises {
 	 icyHot(2, 120) → false
 	 */
 	public boolean icyHot(int temp1, int temp2) {
-		return false;
+		return ((temp1 < 0 && temp2 > 100) || (temp2 < 0 && temp1 > 100));
+	
 	}
 
 	/*
@@ -109,7 +127,7 @@ public class AfternoonExercises {
 	 in1020(8, 99) → false
 	 */
 	public boolean in1020(int a, int b) {
-		return false;
+		return ((10 <= a && a <= 20) || (10 <= b && b <= 20));
 	}
 
 	/*
@@ -120,7 +138,7 @@ public class AfternoonExercises {
 	 hasTeen(20, 10, 13) → true
 	 */
 	public boolean hasTeen(int a, int b, int c) {
-		return false;
+		return  ((a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19));
 	}
 
 	/*
@@ -131,7 +149,7 @@ public class AfternoonExercises {
 	 loneTeen(13, 13) → false
 	 */
 	public boolean loneTeen(int a, int b) {
-		return false;
+		return ((13 <= a && a <= 19) ^ (13 <= b && b <= 19));
 	}
 
 	/*
@@ -141,7 +159,12 @@ public class AfternoonExercises {
 	 intMax(3, 2, 1) → 3
 	 */
 	public int intMax(int a, int b, int c) {
-		return 0;
+	if (a >= b && a >= c) {
+		return a; 
+	} else if (b >= a && b >= c) {
+		return b;
+	} 
+		return c;
 	}
 	
 	/*
@@ -152,7 +175,8 @@ public class AfternoonExercises {
 	 in3050(40, 50) → true
 	 */
 	public boolean in3050(int a, int b) {
-		return false;
+		return (((30 <= a && a <= 40) && (30 <= b && b <= 40)) || 
+				((40 <= a && a <= 50) && (40 <= b && b <= 50)));
 	}
 
 	/*
@@ -163,8 +187,17 @@ public class AfternoonExercises {
 	 max1020(11, 9) → 11
 	 */
 	public int max1020(int a, int b) {
-		return 0;
-	}
+		if ((a >= b) && (10 <= a && a <= 20)) {
+				return a;
+			} else if (10 <= b && b <= 20) {
+				return b;
+				} else if (10 <= a && a <=20) {
+					return a;
+				}
+				return 0;
+			} 
+		
+	
 
 	/*
 	 16. When squirrels get together for a party, they like to have cigars. A squirrel party is successful
@@ -176,7 +209,8 @@ public class AfternoonExercises {
 	 cigarParty(70, true) → true
 	 */
 	public boolean cigarParty(int cigars, boolean isWeekend) {
-		return false;
+		return (((isWeekend) && (40 <= cigars)) || ((!isWeekend) && (40 <= cigars) && (cigars <= 60)));
+		
 	}
 
 	/*
@@ -190,7 +224,12 @@ public class AfternoonExercises {
 	 dateFashion(5, 5) → 1
 	 */
 	public int dateFashion(int you, int date) {
-		return 0;
+		if (you <= 2 || date <= 2) {
+			return 0;
+		} else if (you >= 8 || date >= 8) {
+			return 2;
+		}
+		return 1;
 	}
 
 	/*
@@ -202,6 +241,11 @@ public class AfternoonExercises {
 	 squirrelPlay(95, true) → true
 	 */
 	public boolean squirrelPlay(int temp, boolean isSummer) {
+	 if (60 <= temp && 90 >= temp) {
+		 return true;
+		} else if (60 <= temp && 100 >= temp && isSummer) {
+		 return true;
+		} 
 		return false;
 	}
 
@@ -215,7 +259,11 @@ public class AfternoonExercises {
 	 caughtSpeeding(65, true) → 0
 	 */
 	public int caughtSpeeding(int speed, boolean isBirthday) {
-		return 0;
+		if ((isBirthday && speed <= 65) || (speed <= 60)) {
+			return 0;
+		} else if ((isBirthday && speed <= 85) || (speed <= 80)) {
+			return 1;
+		} else return 2;
 	}
 
 	/*
@@ -226,7 +274,11 @@ public class AfternoonExercises {
 	 sortaSum(10, 11) → 21
 	 */
 	public int sortaSum(int a, int b) {
-		return 0;
+		int sum = (a + b);
+		if (10 <= sum && sum <= 19){
+			return 20;
+		}
+	return sum;
 	}
 
 	/*
@@ -239,7 +291,14 @@ public class AfternoonExercises {
 	 alarmClock(0, false) → "10:00"
 	 */
 	public String alarmClock(int day, boolean vacation) {
-		return "";
+		if (vacation && (day == 0 || day == 6)){
+			return "off";
+		} else if (vacation){
+			return "10:00";
+		} else if (day != 0 && day != 6){
+			return "7:00";
+		}
+		return "10:00";
 	}
 
 	/*
@@ -250,7 +309,8 @@ public class AfternoonExercises {
 	 in1To10(11, true) → true
 	 */
 	public boolean in1To10(int n, boolean outsideMode) {
-		return false;
+		return ((outsideMode && (n <= 1 || n >= 10)) ||
+		(!outsideMode && (1 <= n && n <= 10)));
 	}
 
 	/*
@@ -262,7 +322,8 @@ public class AfternoonExercises {
 	 specialEleven(24) → false
 	 */
 	public boolean specialEleven(int n) {
-		return false;
+		return (n % 11 <= 1);
+		
 	}
 
 	/*
@@ -273,7 +334,7 @@ public class AfternoonExercises {
 	 more20(22) → true
 	 */
 	public boolean more20(int n) {
-		return false;
+		return ((n % 20) <= 2 && (n % 20) != 0);
 	}
 	
 	/*
@@ -284,7 +345,7 @@ public class AfternoonExercises {
 	 old35(15) → false
 	 */
 	public boolean old35(int n) {
-		return false;
+		return (n % 3 == 0 ^ n % 5 == 0);
 	}
 
 	/*
@@ -296,7 +357,7 @@ public class AfternoonExercises {
 	 less20(20) → false
 	 */
 	public boolean less20(int n) {
-		return false;
+		return (n % 20 >= 18);
 	}
 
 	/*
@@ -307,7 +368,7 @@ public class AfternoonExercises {
 	 nearTen(19) → true
 	 */
 	public boolean nearTen(int num) {
-		return false;
+		return (num % 10 <= 2 || num % 10 >= 8);
 	}
 
 	/*
@@ -318,7 +379,10 @@ public class AfternoonExercises {
 	 teenSum(13, 2) → 19
 	 */
 	public int teenSum(int a, int b) {
-		return 0;
+		if ((13 <= a && a <= 19) || (13 <= b && b <= 19)) {
+			return 19;
+		}
+		return a + b;
 	}
 
 	/*
@@ -329,7 +393,8 @@ public class AfternoonExercises {
 	 answerCell(true, false, false) → false
 	 */
 	public boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep) {
-		return false;
+		return !(isAsleep || (!isMom && isMorning));
+		
 	}
 
 	/*
@@ -342,7 +407,12 @@ public class AfternoonExercises {
 	 teaParty(20, 6) → 2
 	 */
 	public int teaParty(int tea, int candy) {
-		return 0;
+		if (tea < 5 || candy < 5) {
+			return 0;
+		} else if (tea >= 2 * candy || candy >= 2 * tea) {
+			return 2;
+		}
+		return 1;
 	}
 
 	/*
@@ -352,7 +422,7 @@ public class AfternoonExercises {
 	 twoAsOne(3, 2, 2) → false
 	 */
 	public boolean twoAsOne(int a, int b, int c) {
-		return false;
+		return (a + b == c || b + c == a || a + c == b);
 	}
 
 	/*
@@ -363,7 +433,7 @@ public class AfternoonExercises {
 	 inOrder(1, 1, 2, true) → true
 	 */
 	public boolean inOrder(int a, int b, int c, boolean bOk) {
-		return false;
+		return ((bOk && c > b) || (c > b && b > a));
 	}
 
 	/*
@@ -375,7 +445,7 @@ public class AfternoonExercises {
 	 inOrderEqual(5, 5, 7, true) → true
 	 */
 	public boolean inOrderEqual(int a, int b, int c, boolean equalOk) {
-		return false;
+		return ((a < b && b < c) || (equalOk && a <= b && b <= c));
 	}
 
 	/*
@@ -386,7 +456,16 @@ public class AfternoonExercises {
 	 loneSum(3, 3, 3) → 0
 	 */
 	public int loneSum(int a, int b, int c) {
-		return 0;
+		if (a != b && b != c && c != a){
+			return a + b + c;
+		} else if (a == b && b == c && c == a){
+			return 0;
+		} else if (a == b) {
+			return c;
+		} else if (a == c){
+			return b;
+		}
+		return a;
 	}
 
 	/*
@@ -400,7 +479,17 @@ public class AfternoonExercises {
 	 luckySum(13, 13, 3) → 0
 	 */
 	public int luckySum(int a, int b, int c) {
-		return 0;
-	}
+	 if (a == 13 && b ==13) { 
+			return 0;
+		} else if (a == 13) {
+			return c;
+		} else if (b == 13) { 
+			return a;
+		} else if (c == 13) {
+			return a + b;
+		}
+		return a + b + c;
+		}
+}	
 
-}
+
