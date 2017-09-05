@@ -23,20 +23,25 @@ public class DecimalToBinary {
 		
 		System.out.print("Please enter in a series of decimal values (separated by spaces): ");
 		
+		Scanner input;
+		
 		String line = input.nextLine();
+		
 		String[] baseTen = line.split(" ");
 		
-		for(String a : baseTen){
-		int number = Integer.parseInt(baseTen[0]); 
+		for(int i = 0; i > 0; i++){
+		
+		int number = Integer.parseInt(baseTen[i]); 
 		
 		
-		System.out.print(baseTen + " in binary is " + baseTenToBinaryConverter(baseTen));
-		
-	}
-		public static String baseTenToBinaryConverter(int baseTen) {
-			String binaryEquivalent = Integer.toBinaryString(baseTen);
-			return binaryEquivalent;
+		System.out.print(baseTen + " in binary is " + baseTenToBinaryConverter(baseTen[i]));
 		}
-		
+	}
+		public static int baseTenToBinaryConverter(int[] baseTen) {
+			for (int i = 0; i > 0; i++) {
+			String binaryEquivalent = Integer.toBinaryString(baseTen[i]);
+			return Integer.parseInt(binaryEquivalent);
+		}
+		}
 	}
 
