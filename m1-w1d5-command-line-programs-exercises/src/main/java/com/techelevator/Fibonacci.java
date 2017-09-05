@@ -20,44 +20,47 @@ Please enter the Fibonacci number: 25
  */
 public class Fibonacci {
 
-	public static void main(int[] args) {
+	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
 		System.out.print("Please enter an integer: ");
 		int num = input.nextInt();
-		int[] sequence = new int [100]; 
-		int j = 0;
+		//int[] sequence = new int [100]; 
+		//int j = 0;
 		
-		System.out.print(fibonacci(sequence[], num));
+		System.out.print(fibonacci(num));
 	}
 		
-	
-	public static int[] fibonacci(int[] sequence, int num){
-		for (int j = 0; sequence[j] < num; j++) { 
-			if (j  == 0) {
-		sequence[0] = 0;
-			} else if (j == 1) {
-		sequence[1] = 1;
-			}
-		for (int i = 2; i < 100; i++) {
-		sequence[i] = (sequence[i-2] + sequence[i-1]);
-		}
-		return sequence[]; 
-		}
-	}
-}
-	
-	/* trying to use an ArrayList to solve the problem of unknown Array length...
-	 
-	 	public static ArrayList<Integer> fibonacci(int num){
+	public static ArrayList<Integer> fibonacci(int num){
 		ArrayList<Integer> myList = new ArrayList<Integer>();
 		myList.add(0);
 		myList.add(1);
-		for (int i = 2; myList.get(i) < num; i++) {
-			myList.add(myList.get(i-2) + myList.get(i-1));
+		for (int i = 0; myList.get(i + 1) < num; i++) {
+			myList.add(myList.get(i) + myList.get(i+1));
 		} 
+		
+		myList.remove(myList.size() - 1);
 		return myList;
-		}*/
+	}
+	
+//	public static int[] fibonacci(int[] sequence, int num){
+//		for (int j = 0; sequence[j] < num; j++) { 
+//			if (j  == 0) {
+//		sequence[0] = 0;
+//			} else if (j == 1) {
+//		sequence[1] = 1;
+//			}
+//		for (int i = 2; i < 100; i++) {
+//		sequence[i] = (sequence[i-2] + sequence[i-1]);
+//		}
+//		return sequence[]; 
+//		}
+//	}
+}
+	
+	/* trying to use an ArrayList to solve the problem of unknown Array length...
+	 */
+	 	
 	
 		/*public static int arraySize(int num, int j){
 			for (j = 1; j < num; j++){

@@ -23,8 +23,11 @@ public class DecimalToBinary {
 		
 		System.out.print("Please enter in a series of decimal values (separated by spaces): ");
 		
+		String line = input.nextLine();
+		String[] baseTen = line.split(" ");
 		
-		int[] baseTen = new int[input.nextInt(str.split(" "))];
+		for(String a : baseTen){
+		int number = Integer.parseInt(baseTen[0]); 
 		
 		
 		System.out.print(baseTen + " in binary is " + baseTenToBinaryConverter(baseTen));
