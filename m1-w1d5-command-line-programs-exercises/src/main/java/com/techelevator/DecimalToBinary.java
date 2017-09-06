@@ -19,29 +19,25 @@ Please enter in a series of decimal values (separated by spaces): 460 8218 1 313
 public class DecimalToBinary {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		
 		System.out.print("Please enter in a series of decimal values (separated by spaces): ");
-		
-		Scanner input;
 		
 		String line = input.nextLine();
 		
 		String[] baseTen = line.split(" ");
 		
-		for(int i = 0; i > 0; i++){
+		for(int i = 0; i < 3; i++){
 		
 		int number = Integer.parseInt(baseTen[i]); 
 		
-		
-		System.out.print(baseTen + " in binary is " + baseTenToBinaryConverter(baseTen[i]));
+		System.out.println(baseTen[i] + " in binary is " + baseTenToBinaryConverter(number) + " ");
 		}
 	}
-		public static int baseTenToBinaryConverter(int[] baseTen) {
-			for (int i = 0; i > 0; i++) {
-			String binaryEquivalent = Integer.toBinaryString(baseTen[i]);
-			return Integer.parseInt(binaryEquivalent);
+		public static String baseTenToBinaryConverter(int number) {
+			String binaryEquivalent = Integer.toBinaryString(number);
+			return binaryEquivalent;
 		}
 		}
-	}
+
 
