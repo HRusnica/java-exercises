@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Exercises {
@@ -34,7 +35,22 @@ public class Exercises {
 	 * 
 	 */
 	public String animalGroupName(String animalName) {
-		return null;
+		Map<String, String> animalGroups = new HashMap<>();
+		animalGroups.put("rhino", "Crash");
+		animalGroups.put("giraffe", "Tower");
+		animalGroups.put("elephant", "Herd");
+		animalGroups.put("lion", "Pride");
+		animalGroups.put("crow", "Murder");
+		animalGroups.put("pigeon", "Kit");
+		animalGroups.put("flamingo", "Pat");
+		animalGroups.put("deer", "Herd");
+		animalGroups.put("dog", "Pack");
+		animalGroups.put("crocodile", "Float");
+		
+		if (animalGroups.get(animalName.toLowerCase()) == null) {
+			return "unknown";
+		}
+		return animalGroups.get(animalName.toLowerCase());
 	}
 
 	/*
@@ -60,7 +76,19 @@ public class Exercises {
 	 * 
 	 */
 	public Double isItOnSale(String itemNumber) {
-		return null;
+		Map<String, Double> salePrice = new HashMap<>();
+		salePrice.put("KITCHEN4001", 0.20);
+		salePrice.put("GARAGE1070", 0.15);
+		salePrice.put("LIVINGROOM", 0.10);
+		salePrice.put("KITCHEN6073", 0.40);
+		salePrice.put("BEDROOM3434", 0.60);
+		salePrice.put("BATH0073", 0.15);
+		
+		if (salePrice.get(itemNumber.toUpperCase()) == null) {
+			return 0.00;
+		}
+		return salePrice.get(itemNumber.toUpperCase());
+		
 	}
 	
 	/*
@@ -74,10 +102,20 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		return null;
-	}
-	
-    /*
+		int peteTotal = peterPaul.get("Peter");
+		int paulTotal = peterPaul.get("Paul");
+
+		if (paulTotal < 1000 && peteTotal > 0) {
+			int stolenMoney = peteTotal / 2;
+			peterPaul.put("Paul", paulTotal + stolenMoney);
+			peterPaul.put("Peter", peteTotal - stolenMoney);
+		}
+				return peterPaul;
+		}
+		
+
+
+	/*
 	 * Modify and return the given map as follows: if "Peter" has $50 or more, AND "Paul" has $100 or more,
 	 * then create a new "PeterPaulPartnership" worth a combined contribution of a quarter of each partner's
 	 * current worth.
@@ -87,7 +125,18 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		return null;
+		int peteTotal = peterPaul.get("Peter");
+		int paulTotal = peterPaul.get("Paul");
+
+		if (peteTotal >= 5000 && paulTotal >= 10000) {
+			int peteContribution = peteTotal / 4;
+			int paulContribution = paulTotal / 4;
+			int partnership = peteContribution + paulContribution;
+			peterPaul.put("Paul", paulTotal - paulContribution );
+			peterPaul.put("Peter", peteTotal - peteContribution);
+			peterPaul.put("PeterPaulPartnership", partnership);
+		}
+				return peterPaul;
 	}
 	
 	/*
@@ -99,6 +148,8 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
+		
+		
 		return null;
 	}
 	
@@ -114,9 +165,18 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> wordCount(String[] words) {
-		return null;
+		Map<String, Integer> counts = new HashMap<>();
+		for (String word: words) {
+			if (counts.containsKey(word)) {
+				int currentCount = counts.get(word);
+				currentCount++;
+				counts.put(word, currentCount);
+			} else { 
+				counts.put(word, 1);
+		}
+		}
+		return counts;
 	}
-	
 	/*
 	 * Given an array of int values, return a Map<Integer, Integer> with a key for each int, with the value the 
 	 * number of times that int appears in the array.
@@ -175,6 +235,20 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> last2Revisted(String[] words) {
+		/*if(str.length() <= 2) {
+			return 0;
+		}
+		String lastTwo = words.substring(words.length() - 2);
+		int matchIndex - 0;
+		i
+		int num = 0;
+		for (int i = 0; i < str.length() - 2; i++){
+			if (str.substring(i, i + 2).equals(str.substring((str.length() - 2), (str.length())))) {
+					num++;
+				}
+				} return num;
+			}*/
+		
 		return null;
 	}
 }

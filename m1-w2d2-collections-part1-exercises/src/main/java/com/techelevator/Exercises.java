@@ -103,7 +103,8 @@ public class Exercises {
 			if (integerList.get(i) >integerList.get(j)); {
 				j--;
 			} { i++;
-		} return integerList.get(i);
+		} Integer x = integerList.get(i);
+		return x;
 			} 
 		}
 			
@@ -160,14 +161,21 @@ public class Exercises {
 	 HINT: To convert an integer x to a string you can call x.toString() in your code (e.g. if x = 1 then x.ToString() equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		List<String> fizzBuzz = new ArrayList<String>();
-		integerArray
+		List<String> fizzBuzz = new ArrayList<>();
+
 		for (int i = 0; i < integerArray.length; i++){
-			if (integerArray.get(i) == 15) {
-				
-			}
-		}
-		return null;
+			if (integerArray[i].equals(0)) {
+				fizzBuzz.add(integerArray[i].toString());
+			} else if (integerArray[i] % 15 == 0) {
+			fizzBuzz.add("FizzBuzz");
+			} else if (integerArray[i] % 3 == 0) {
+				fizzBuzz.add("Fizz");
+			} else if (integerArray[i] % 5 == 0) {
+				fizzBuzz.add("Buzz");
+			} else {fizzBuzz.add(integerArray[i].toString());	
+			}}
+		System.out.println(fizzBuzz);
+		return fizzBuzz;
 	}
 
 	/*
@@ -177,8 +185,10 @@ public class Exercises {
 	 distinctValues( ["jingle", "bells", "jingle", "bells", "jingle", "all", "the", "way"] ) -> ["jingle", "bells", "all", "the", "way"]
 	 */
 	public List<String> distinctValues(List<String> stringList) {
-		
-		return null;
+	
+		Set<String> noDuplicates = new HashSet<String>(stringList);
+		List<String> noRepeats = new ArrayList<String>(noDuplicates);
+		return noRepeats;
 	}
 
 	/*
