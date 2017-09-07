@@ -348,11 +348,9 @@ public class Exercises {
 	public String stringBits(String str) {
 		char[] name = str.toCharArray();
 		String everyOther = new String();
-			for (int i = 0; i < str.length(); i++){
-			if (str.length() % 2 == 0) {
-				everyOther += name[i];
+			for (int i = 0; i < str.length(); i += 2){
+				everyOther += (String.valueOf(name[i]));
 			} 
-			}
 			return everyOther;
 	}
 
@@ -397,13 +395,18 @@ public class Exercises {
 	 stringX("xabxxxcdx") → "xabcdx"
 	 */
 	public String stringX(String str) {
+		if (str.length() <= 2){
+			return str;
+		}
 		String word = new String();
-		word.equals(str.substring(0, 1));
+		word = (str.substring(0, 1));
 		for (int i = 1; i < str.length() - 1; i++){
-			if (str.substring(i, i + 1).equals("x")){
-			} word.concat(str.substring(i, i + 1));	
-			} word.concat(str.substring(str.length() - 1));
-		return word;
+			if (!str.substring(i, i + 1).equals("x")){
+			 word += (str.substring(i, i + 1));	
+			 }
+			} 
+			word += (str.substring(str.length() - 1));
+			return word;
 	}
 
 	/*
@@ -413,7 +416,17 @@ public class Exercises {
 	 altPairs("CodingHorror") → "Congrr"
 	 */
 	public String altPairs(String str) {
-		return null;
+		String strangeWord = new String();
+		if (str.length() <= 2) {
+			return str;
+		}
+		for (int i = 0; i < str.length() - 1; i += 4){
+			strangeWord += str.substring(i, i + 2);
+			} 
+		if(str.length() % 4 == 1) {
+			strangeWord += str.substring(str.length()-1); 
+			}
+		return strangeWord;
 	}
 
 	/*
@@ -424,7 +437,27 @@ public class Exercises {
 	 stringYak("yak123ya") → "123ya"
 	 */
 	public String stringYak(String str) {
-		return null;
+		for (int i = 0; i <= str.length(); i++){
+			if (str.substring(i, i + 3) == "yak"){
+				str.
+			}
+		}
+		
+		(str.length() > 2){
+			String badFirst = str.substring(0, 3);
+			if (badFirst.equals("yak")) {
+				str = str.substring(3, str.length());
+				} else if (str.length() > 3) {
+			String badSecond = str.substring(1, 4);
+			if (badSecond.equals("yak")) {
+				str = str.substring(0, 1) + str.substring(4, str.length());
+					}else if (str.length() > 4) {
+						String badSecond = str.substring(2, 5);
+						if (badThird.equals("yak")) {
+							str = str.substring(0, 1) + str.substring(4, str.length());
+								}
+				} 
+			}	return str;
 	}
-	
+	}
 }
