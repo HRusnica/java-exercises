@@ -1,6 +1,8 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Exercises {
@@ -148,9 +150,18 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
+		List<String> firstLastList = new ArrayList<String>();
+		Map<String, String> firstLast = new HashMap<String, String>();
 		
+		for (int i = 0; i < words.length; i++) {
+			firstLastList.add(words[i]);
+		}
+		for (int j = 0; j < firstLastList.size(); j++){
+		firstLast.put((firstLastList.get(j).substring(0, 1)), 
+				(firstLastList.get(j).substring(firstLastList.get(j).length() - 1)));
+		}
 		
-		return null;
+		return firstLast;
 	}
 	
 	/*
@@ -189,7 +200,17 @@ public class Exercises {
 	 * 
 	 */
 	public Map<Integer, Integer> integerCount(int[] ints) {
-		return null;
+		Map<Integer, Integer> recurring = new HashMap<>();
+		for (Integer num: ints) {
+			if (recurring.containsValue(num)) {
+				int currentCount = recurring.get(num);
+				currentCount++;
+				recurring.put(num, currentCount);
+			} else { 
+				recurring.put(num, 1);
+		}
+		}
+		return recurring;
 	}
 	
 	/*
@@ -202,7 +223,15 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
-		return null;
+		Map<String, Boolean> inFact = new HashMap<>();
+		for (String trueOrFalse: words) {
+			if (inFact.containsKey(trueOrFalse)) {
+				inFact.put(words, true);
+			} else { 
+				inFact.put(words, false);
+		}
+		}
+		return inFact;
 	}
 	
 	/*
