@@ -10,7 +10,7 @@ public class Exercises {
 	/*
 	 * Dictionary/Map Exercises
 	 */
-	
+
 	/*
 	 * Given the name of an animal, return the name of a group of that animal
 	 * (e.g. "Elephant" -> "Herd", "Rhino" - "Crash").  
@@ -48,7 +48,7 @@ public class Exercises {
 		animalGroups.put("deer", "Herd");
 		animalGroups.put("dog", "Pack");
 		animalGroups.put("crocodile", "Float");
-		
+
 		if (animalGroups.get(animalName.toLowerCase()) == null) {
 			return "unknown";
 		}
@@ -85,14 +85,14 @@ public class Exercises {
 		salePrice.put("KITCHEN6073", 0.40);
 		salePrice.put("BEDROOM3434", 0.60);
 		salePrice.put("BATH0073", 0.15);
-		
+
 		if (salePrice.get(itemNumber.toUpperCase()) == null) {
 			return 0.00;
 		}
 		return salePrice.get(itemNumber.toUpperCase());
-		
+
 	}
-	
+
 	/*
 	 * Modify and return the given map as follows: if "Peter" has more than 0 money, transfer half of it to "Paul",
 	 * but only if Paul has less than $10s.
@@ -112,9 +112,9 @@ public class Exercises {
 			peterPaul.put("Paul", paulTotal + stolenMoney);
 			peterPaul.put("Peter", peteTotal - stolenMoney);
 		}
-				return peterPaul;
-		}
-		
+		return peterPaul;
+	}
+
 
 
 	/*
@@ -134,13 +134,13 @@ public class Exercises {
 			int peteContribution = peteTotal / 4;
 			int paulContribution = paulTotal / 4;
 			int partnership = peteContribution + paulContribution;
-			peterPaul.put("Paul", paulTotal - paulContribution );
+			peterPaul.put("Paul", paulTotal - paulContribution);
 			peterPaul.put("Peter", peteTotal - peteContribution);
 			peterPaul.put("PeterPaulPartnership", partnership);
 		}
-				return peterPaul;
+		return peterPaul;
 	}
-	
+
 	/*
 	 * Given an array of non-empty strings, return a Map<String, String> where for every different string in the array, 
 	 * there is a key of its first character with the value of its last character.
@@ -152,18 +152,18 @@ public class Exercises {
 	public Map<String, String> beginningAndEnding(String[] words) {
 		List<String> firstLastList = new ArrayList<String>();
 		Map<String, String> firstLast = new HashMap<String, String>();
-		
+
 		for (int i = 0; i < words.length; i++) {
 			firstLastList.add(words[i]);
 		}
 		for (int j = 0; j < firstLastList.size(); j++){
-		firstLast.put((firstLastList.get(j).substring(0, 1)), 
-				(firstLastList.get(j).substring(firstLastList.get(j).length() - 1)));
+			firstLast.put((firstLastList.get(j).substring(0, 1)), 
+					(firstLastList.get(j).substring(firstLastList.get(j).length() - 1)));
 		}
-		
+
 		return firstLast;
 	}
-	
+
 	/*
 	 * Given an array of strings, return a Map<String, Integer> with a key for each different string, with the value the 
 	 * number of times that string appears in the array.
@@ -184,7 +184,7 @@ public class Exercises {
 				counts.put(word, currentCount);
 			} else { 
 				counts.put(word, 1);
-		}
+			}
 		}
 		return counts;
 	}
@@ -202,17 +202,17 @@ public class Exercises {
 	public Map<Integer, Integer> integerCount(int[] ints) {
 		Map<Integer, Integer> recurring = new HashMap<>();
 		for (Integer num: ints) {
-			if (recurring.containsValue(num)) {
+			if (recurring.containsKey(num)) {
 				int currentCount = recurring.get(num);
 				currentCount++;
 				recurring.put(num, currentCount);
 			} else { 
 				recurring.put(num, 1);
-		}
+			}
 		}
 		return recurring;
 	}
-	
+
 	/*
 	 * Given an array of strings, return a Map<String, Boolean> where each different string is a key and value
 	 * is true only if that string appears 2 or more times in the array.
@@ -224,16 +224,16 @@ public class Exercises {
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
 		Map<String, Boolean> inFact = new HashMap<>();
-		for (String trueOrFalse: words) {
-			if (inFact.containsKey(trueOrFalse)) {
-				inFact.put(words, true);
+		for(String x : words){
+			if (inFact.containsKey(x)) {
+				inFact.put(x, true);
 			} else { 
-				inFact.put(words, false);
-		}
+				inFact.put(x, false);
+			}
 		}
 		return inFact;
 	}
-	
+
 	/*
 	 * Given two maps, Map<String, Integer>, merge the two into a new map, Map<String, Integer> where keys in Map2, 
 	 * and their Integer values, are added to the Integer values of matching keys in Map1. Return the new map.
@@ -245,8 +245,17 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse, Map<String, Integer> remoteWarehouse) {
+		Map<String, Integer> consolidatedMap = new HashMap<>();
+		consolidatedMap.putAll(mainWarehouse);
+//		for(String i : remoteWarehouse.get(i)){
+//				
+//			
+//		}
+		
 		return null;
 	}
+
+
 
 	/*
 	 * Just when you thought it was safe to get back in the water --- last2Revisited!!!!
@@ -264,20 +273,37 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> last2Revisted(String[] words) {
-		/*if(str.length() <= 2) {
-			return 0;
-		}
-		String lastTwo = words.substring(words.length() - 2);
-		int matchIndex - 0;
-		i
-		int num = 0;
-		for (int i = 0; i < str.length() - 2; i++){
-			if (str.substring(i, i + 2).equals(str.substring((str.length() - 2), (str.length())))) {
-					num++;
-				}
-				} return num;
-			}*/
 		
-		return null;
+		Map<String, Integer> last = new HashMap<>();	
+		for (int i = 0; i < words.length; i++){
+			int num = 0;
+			last.put(words[i], num);
+			for (int j = 0; j < words[i].length() - 2; j++){
+				if (words[i].substring(j, j + 2).equals(words[i].substring(words[i].length() - 2))){
+					num++;
+					System.out.println(num);
+					last.put(words[i], num);
+				} 
+			}
+		}
+		
+		return last;
 	}
+	
 }
+		
+	
+
+			
+//			(word, substring(word.length() - 2, );
+//			int matchIndex - 0;
+//			i
+//			int num = 0;
+//			for (int i = 0; i < str.length() - 2; i++){
+//				if (word.substring(i, i + 2).equals(word.substring((word.length() - 2), (word.length())))) {
+//					num++;
+//				}
+//			} return num;
+//		}last.put(word, num);
+	
+

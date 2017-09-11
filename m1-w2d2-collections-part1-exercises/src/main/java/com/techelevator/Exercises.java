@@ -199,7 +199,17 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> combined = new ArrayList<>();
+		int biggerLength;
+		
+		if (listOne.size() == listTwo.size()) { 
+		
+		for (int i = 0; i < listOne.size(); i++) {
+		combined.add(ListOne(i));
+		combined.add(ListTwo(i));
+		}
+		
+		return combined;
 	}
 
 	/*
