@@ -247,11 +247,16 @@ public class Exercises {
 	public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse, Map<String, Integer> remoteWarehouse) {
 		Map<String, Integer> consolidatedMap = new HashMap<>();
 		consolidatedMap.putAll(mainWarehouse);
-//		for(String i : remoteWarehouse.get(i)){
-//				
-//			
-//		}
+		for (String key : Map.keySet()){
+			remoteWarehouse.
+		}
+			
 		
+		//		for(String i : remoteWarehouse.get(i)){
+		//				
+		//			
+		//		}
+
 		return null;
 	}
 
@@ -273,7 +278,7 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> last2Revisted(String[] words) {
-		
+
 		Map<String, Integer> last = new HashMap<>();	
 		for (int i = 0; i < words.length; i++){
 			int num = 0;
@@ -286,24 +291,15 @@ public class Exercises {
 				} 
 			}
 		}
-		
+
 		return last;
 	}
-	
-}
-		
-	
 
-			
-//			(word, substring(word.length() - 2, );
-//			int matchIndex - 0;
-//			i
-//			int num = 0;
-//			for (int i = 0; i < str.length() - 2; i++){
-//				if (word.substring(i, i + 2).equals(word.substring((word.length() - 2), (word.length())))) {
-//					num++;
-//				}
-//			} return num;
-//		}last.put(word, num);
-	
+}
+
+
+
+
+
+
 
