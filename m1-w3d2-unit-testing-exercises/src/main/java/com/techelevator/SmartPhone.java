@@ -74,11 +74,16 @@ public class SmartPhone {
      * @return True if the call could be placed, false otherwise
      */
     public boolean Call(String phoneNumberToCall, int numberOfMinutesToTalk)
-    {                        
-        onCall = true;
+    {   if (phoneNumberToCall.length() == 10)  {                   
+        if (numberOfMinutesToTalk <= 0) {
+        	onCall = false;
+        	return false;
+        }else if(numberOfMinutesToTalk <= batteryCharge) {
+        	onCall = true;
         batteryCharge -= numberOfMinutesToTalk;
-
-        return true;
+        return true;} 
+        batteryCharge = 0;}
+        return false;
     }
 
     /**
@@ -94,7 +99,7 @@ public class SmartPhone {
      */
     public void HangUp()
     {
-        onCall = !onCall;
+        onCall = false;
     }
 
     /**
@@ -102,7 +107,7 @@ public class SmartPhone {
      */
     public void RechargeBattery()
     {
-        batteryCharge = 95;
+        batteryCharge = 100;
     }
 
 }

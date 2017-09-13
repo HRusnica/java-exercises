@@ -6,7 +6,7 @@ public class Elevator {
     private int currentLevel;
     private int numberOfLevels;
     private boolean doorOpen = true;
-    private boolean moving;
+    private boolean moving = false;
 
     /**
      * Creates a new elevator 
@@ -15,8 +15,8 @@ public class Elevator {
      */
     public Elevator(int shaftNumber, int totalNumberOfFloors) {
         this.shaftNumber = shaftNumber;
-        this.numberOfLevels = totalNumberOfFloors;
-        this.currentLevel = 1;
+        numberOfLevels = totalNumberOfFloors;
+        currentLevel = 1;
     }
 
     /**
@@ -77,7 +77,7 @@ public class Elevator {
     {
         if (!moving)
         {
-            doorOpen = !doorOpen;
+            doorOpen = false;
         }
     }
 
@@ -88,15 +88,11 @@ public class Elevator {
      */
     public boolean GoUp(int desiredFloor)
     {
-        currentLevel = desiredFloor;
-
-        if (desiredFloor > currentLevel && desiredFloor <= numberOfLevels && doorOpen)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
+        if (desiredFloor > currentLevel && desiredFloor <= numberOfLevels && !doorOpen)
+        { currentLevel = desiredFloor;
+        	return true;
+        } else {
+        	return false;
         }
     }
 
@@ -109,7 +105,7 @@ public class Elevator {
     {
         if (!doorOpen && desiredFloor < currentLevel && desiredFloor > 0)
         {
-            currentLevel -= desiredFloor;
+            currentLevel = desiredFloor;
             return true;
         }
 

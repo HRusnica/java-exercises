@@ -17,7 +17,13 @@ public class Airplane {
         this.totalFirstClassSeats = totalFirstClassSeats;
         this.totalCoachSeats = totalCoachSeats;            
     }
-
+	public int getAvailableFirstClassSeats(){
+		return totalFirstClassSeats - bookedFirstClassSeats;
+	}
+	
+	public int getAvailableCoachSeats(){
+		return totalCoachSeats - bookedCoachSeats;
+	}
     /**
      * 6-Character Plane Number 
      * @return planeNumber
@@ -35,13 +41,7 @@ public class Airplane {
     }
 
     /**
-     * Available number of first class seats 
-     * @return availableFirstClassSeats
-     */
-    public int getAvailableFirstClassSeats() {
-        return bookedFirstClassSeats;
-    }
-
+  
     /**
      * Total number of first class seats 
      * @return totalFirstClassSeats
@@ -58,13 +58,6 @@ public class Airplane {
         return bookedCoachSeats;
     }
 
-    /**
-     * Available number of coach seats 
-     * @return availableCoachSeats
-     */
-    public int getAvailableCoachSeats() {
-        return totalCoachSeats;
-    }
 
     /**
      * Total number of coach seats 
@@ -80,20 +73,16 @@ public class Airplane {
      * @param totalNumberOfSeats Total number of seats to reserve
      * @return True if reservation was successful, false otherwise
      */
-    public boolean Reserve(boolean firstClass, int totalNumberOfSeats) {       
-        if (firstClass) {
-            bookedFirstClassSeats += totalNumberOfSeats;
-            if (totalNumberOfSeats > getAvailableFirstClassSeats()) {
-                return false;
-            }
-        }
-        else {
-            bookedCoachSeats += totalNumberOfSeats;
-            if (totalNumberOfSeats > getAvailableCoachSeats()) {
-                return false;
-            }
-        }
-        return true;
-    }
+          
+    	public boolean reserveSeats(boolean forFirstClass, int totalNumberOfSeats) {
+    		if (forFirstClass && getAvailableFirstClassSeats() >= totalNumberOfSeats){
+    			bookedFirstClassSeats += totalNumberOfSeats;
+    			return true;
+    		} if ((!forFirstClass) && (getAvailableCoachSeats() >= totalNumberOfSeats)){
+    			bookedCoachSeats += totalNumberOfSeats;
+    			return true;
+    			} 
+    		 return false;
+    	}
 
 }
