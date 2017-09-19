@@ -1,6 +1,7 @@
 package com.techelevator;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KataRomanNumerals {
 public String ones;
@@ -9,7 +10,7 @@ public String hundreds;
 public String thousands;
 public int input;
 public int[] numArray;
-	
+public ArrayList<String> romNumeralArray = new ArrayList<String>();
 	
 
 	public int[] convertToNumArray(int input) {
@@ -115,6 +116,15 @@ public int[] numArray;
 			}
 		return thousands;
 		}
+	
+	
+public List<String> convertToArray(String romNumeral, List<String> romNumeralArray) {
+	char[] romNumCharArray = romNumeral.toCharArray();
+	for(int i = 0; i < romNumCharArray.length; i++){
+		romNumeralArray.add(String.valueOf(romNumCharArray[i]));
+	}
+		return romNumeralArray;
 	}
 	
+}
 

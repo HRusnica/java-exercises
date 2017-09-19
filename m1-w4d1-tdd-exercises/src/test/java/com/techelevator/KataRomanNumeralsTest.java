@@ -3,6 +3,8 @@ package com.techelevator;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 public class KataRomanNumeralsTest {
 
 KataRomanNumerals sut;
@@ -70,6 +72,14 @@ public void testConvertOne(){
 		assertEquals("MDXXXVII", sut.findValues(1537));
 	}
 	
+	@Test
+	public void testEverything15(){
+		assertEquals("XV", sut.findValues(15));
+	}
 	
+	@Test
+	public void testRomanNumeralToList(){
+		assertArrayEquals({"X", "X"}, sut.convertToArray("xx", new ArrayList<String>()));
+	}
 	
 }
