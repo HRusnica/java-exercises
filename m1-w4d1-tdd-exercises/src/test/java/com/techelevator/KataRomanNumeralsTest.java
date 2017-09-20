@@ -4,6 +4,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class KataRomanNumeralsTest {
 
@@ -75,11 +76,6 @@ public void testConvertOne(){
 	@Test
 	public void testEverything15(){
 		assertEquals("XV", sut.findValues(15));
-	}
-	
-	@Test
-	public void testRomanNumeralToList(){
-		assertArrayEquals({"X", "X"}, sut.convertToArray("xx", new ArrayList<String>()));
 	}
 	
 }
