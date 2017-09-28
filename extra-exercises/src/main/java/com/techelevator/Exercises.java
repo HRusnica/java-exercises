@@ -12,7 +12,17 @@ public class Exercises {
     arrayDeduplication([1, 1, 1]) → [1]
     */
     public int[] arrayDeduplication(int[] nums) {
-        return null;
+        int j = nums.length;
+        for(int i = 0; i < nums.length; i++){
+        	for(int k = 0; k < nums.length; k++){
+        		if (nums[i] == nums[k]){
+        			j--;
+        		}
+        	}
+        } int[] deduped = new int[j];
+        for(int m = 0; m < nums.length; m++){
+        	
+        }
     }
     
     /*
@@ -33,6 +43,14 @@ public class Exercises {
     arraySort([8, 13, 9, 12]) → [8, 9, 12, 13]        
     */
     public int[] arraySort(int[] nums) {
+    	int[] newArray = new int[nums.length];
+    	for(int i = 0; i < nums.length; i++){
+    		for(int j = 1; j < nums.length; j++){
+    			if(nums[i] <= nums[j]){
+    			newArray[0] = nums[i];
+    			}
+    		}
+    	}
         return null;
     }
 
@@ -230,7 +248,14 @@ public class Exercises {
     tripleUp([1, 2, 4]) → false
     */
     public boolean tripleUp(int[] nums) {
-        return false;
+    	if(nums.length < 3){
+    		return false;
+    	} else
+        for(int i = 0; i < nums.length - 2; i++){
+        	if((nums[i + 1] - nums[i] == 1) && (nums[i + 2] - nums[i + 1] == 1)){
+        		return true;
+        	}
+        }return false;
     }
 
     /*
@@ -242,6 +267,11 @@ public class Exercises {
     * zipZap("zzzopzop") → "zzzpzp"
     */
     public String zipZap(String str) {
-        return null;
+    	for(int i = 0; i < str.length()-3; i++){
+    		if(str.substring(i, i+1).equals("z") && str.substring(i+2, i+3).equals("p")){
+    			str = str.substring(0, i+1) + str.substring(i+2, str.length());
+    		}
+    	}
+        return str;
     }
 }
