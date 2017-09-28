@@ -3,40 +3,108 @@
 
 -- 1. Add actors, Hampton Avenue, and Lisa Byway to the actor table.
 
+INSERT INTO actor (first_name, last_name) VALUES ('Hampton', 'Avenue')
+INSERT INTO actor (first_name, last_name) VALUES ('LISA', 'BYWAY')
+SELECT * FROM actor WHERE last_name IN ('Avenue', 'BYWAY')
+
 -- 2. Add "Euclidean PI", "The epic story of Euclid as a pizza delivery boy in 
 -- ancient Greece", to the film table. The movie was released in 2008 in English. 
 -- Since its an epic, the run length is 3hrs and 18mins. There are no special 
 -- features, the film speaks for itself, and doesn't need any gimmicks.	
 
+INSERT INTO film (title, language_id, rental_duration, rental_rate, replacement_cost, release_year) VALUES ('Euclidean PI', 1, 198, .99, 10.99, 2006)
+
+SELECT * FROM film WHERE title = 'Euclidean PI'
+
 -- 3. Hampton Avenue plays Euclid, while Lisa Byway plays his slightly 
 -- overprotective mother, in the film, "Euclidean PI". Add them to the film.
+INSERT INTO film_actor (actor_id, film_id) VALUES (201, 1001)
+INSERT INTO film_actor (actor_id, film_id) VALUES (202, 1001)
+SELECT * FROM film_actor WHERE film_id = 1001
 
 -- 4. Add Mathmagical to the category table.
 
+INSERT INTO category (name) VALUES ('Mathmagical')
+SELECT * FROM category WHERE name = 'Mathmagical'
+
 -- 5. Assign the Mathmagical category to the following films, "Euclidean PI", 
 -- "EGG IGBY", "KARATE MOON", "RANDOM GO", and "YOUNG LANGUAGE"
+BEGIN TRANSACTION;
+
+UPDATE film_category SET category_id = 17 WHERE film_id IN
+(SELECT film_id FROM film WHERE title IN ('EGG IGBY', 'KARATE MOON', 'RANDOM GO', 'YOUNG LANGUAGE'))
+
+INSERT INTO film_category (category_id, film_id) VALUES (17, 1001)
+
+SELECT * FROM film_category WHERE category_id = 17
+COMMIT;
 
 -- 6. Mathmagical films always have a "G" rating, adjust all Mathmagical films 
 -- accordingly.
 -- (5 rows affected)
+BEGIN TRANSACTION;
+UPDATE film SET rating = 'G' WHERE film_id IN
+(SELECT film_id FROM film_category WHERE category_id = 17)
+
+SELECT rating FROM film WHERE film_id IN 
+(SELECT film_id FROM film_category WHERE category_id = 17)
+
+COMMIT;
 
 -- 7. Add a copy of "Euclidean PI" to all the stores.
+
+SELECT DISTINCT store_id FROM inventory
+INSERT INTO inventory (film_id, store_id) VALUES (1001, 1)
+INSERT INTO inventory (film_id, store_id) VALUES (1001, 2)
+
+SELECT store_id, inventory_id FROM inventory WHERE film_id = 1001
 
 -- 8. The Feds have stepped in and have impounded all copies of the pirated film, 
 -- "Euclidean PI". The film has been seized from all stores, and needs to be 
 -- deleted from the film table. Delete "Euclidean PI" from the film table. 
 -- (Did it succeed? Why?)
+BEGIN TRANSACTION
+DELETE FROM film WHERE film_id = 1001
+ROLLBACK;
+
+--It did not succeed, because the primary key for this item is being referenced on film_actor
+-- and there are constraints in place preventing this action in order to preserve data integrity.
 
 -- 9. Delete Mathmagical from the category table. 
 -- (Did it succeed? Why?)
+BEGIN TRANSACTION;
+DELETE FROM category WHERE name = 'Mathmagical'
+ROLLBACK;
+
+--It did not succeed, because the primary key for this item is being referenced on film_category
+-- and there are constraints in place preventing this action in order to preserve data integrity.
 
 -- 10. Delete all links to Mathmagical in the film_category tale. 
 -- (Did it succeed? Why?)
+BEGIN TRANSACTION;
+DELETE FROM film_category WHERE category_id = '17'
+COMMIT;
+--SUCCESS!! This worked because while this breaks the link between film and category, film doesn't contain a category
+-- id and category doesn't contain the film id.  The integrity of our data is in tact.
 
 -- 11. Retry deleting Mathmagical from the category table, followed by retrying
 -- to delete "Euclidean PI". 
 -- (Did either deletes succeed? Why?)
+BEGIN TRANSACTION;
+DELETE FROM category WHERE name = 'Mathmagical'
+COMMIT;
+
+BEGIN TRANSACTION
+DELETE FROM film WHERE film_id = 1001
+ROLLBACK;
+
+--I was able to successfully delete Mathmagical from category because, the category_id was no longer in use or referenced 
+--on any other tables. I was unable to delete Euclidean PI, because it's a part of inventory now.
 
 -- 12. Check database metadata to determine all constraints of the film id, and 
 -- describe any remaining adjustments needed before the film "Euclidean PI" can 
 -- be removed from the film table.
+
+--I would need to remove the film_id from inventory before deleting the film id. I would also have to remove the row in film_actor, 
+--which links the actor_id to the film-id. When deleting the film_id from the film table, the entire row must be removed. Any entry into the film table requires
+--all entries to have a film ID.
