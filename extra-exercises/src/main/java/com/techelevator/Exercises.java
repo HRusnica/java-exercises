@@ -237,7 +237,19 @@ public class Exercises {
     * stringMatch("abc", "axc") → 0  
     */
     public int stringMatch(String a, String b) {
-        return 0;
+    	int count = 0;
+    	if(a.length() < b.length())
+    	for(int i = 0; i < a.length()-1; i++){
+    	if(a.substring(i, i+2).equals(b.substring(i, i+2))){
+    		count++;
+    	}
+    	} else 
+    		for(int i = 0; i < b.length()-1; i++){
+    	    	if(b.substring(i, i+2).equals(a.substring(i, i+2))){
+    	    		count++;
+    	    	}
+    		}
+    	return count;
     }
 
     /*
@@ -267,7 +279,7 @@ public class Exercises {
     * zipZap("zzzopzop") → "zzzpzp"
     */
     public String zipZap(String str) {
-    	for(int i = 0; i < str.length()-3; i++){
+    	for(int i = 0; i < str.length()-2; i++){
     		if(str.substring(i, i+1).equals("z") && str.substring(i+2, i+3).equals("p")){
     			str = str.substring(0, i+1) + str.substring(i+2, str.length());
     		}
