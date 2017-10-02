@@ -111,7 +111,11 @@ public class Exercises {
     * has271([2, 7, 1]) → true     
     */
     public boolean has271(int[] nums) {
-        return false;
+        for(int i = 1; i < nums.length-1; i++){
+        	if(nums[i] == nums[i-1]+5 && (nums[i+1] <= (nums[i]-4) && nums[i+1] >= nums[i]-8)){
+        		return true;
+        	}
+        } return false;
     }
 
     /*
@@ -123,7 +127,7 @@ public class Exercises {
     lastDigit(23, 19, 3) → true
     */
     public boolean lastDigit(int a, int b, int c) {
-        return false;
+    	return(a % 10 == b % 10 || b % 10 == c % 10 || a % 10 == c % 10);
     }
 
     /*
@@ -136,7 +140,9 @@ public class Exercises {
     makeBricks(3, 2, 10) → true
     */
     public boolean makeBricks(int small, int big, int goal) {
-        return false;
+        if(big * 5 + small < goal || goal % 5 > small){
+        	return false;	
+        }else return true;
     }
 
     /*
@@ -160,7 +166,22 @@ public class Exercises {
     maxSpan([1, 4, 2, 1, 4, 4, 4]) → 6
     */
     public int maxSpan(int[] nums) {
-        return 0;
+        if(nums.length < 1){
+        	return 0;
+        }	int span = 1;
+        	for(int i = 0; i < nums.length; i++){
+        		int start = i;
+        		int end = 0;
+        		for(int j =0; j < nums.length; j++){
+        			if(nums[i] == nums[j]){
+        					end = j;
+        					if(end - start + 1 > span){
+        					span = end - start + 1;
+        					}
+        				}
+        	
+        		}
+        	} return span;
     }
 
     /*
@@ -170,7 +191,11 @@ public class Exercises {
     * mixStart("piz snacks") → false        
     */
     public boolean mixStart(String str) {
-        return false;
+        if(str.length() > 2){
+        	if(str.substring(1, 3).equals("ix")){
+        		return true;
+        	}
+        }return false;
     }
 
     /*
@@ -180,6 +205,17 @@ public class Exercises {
     more14([1, 1]) → true
     */
     public boolean more14(int[] nums) {
+    	int ones = 0;
+    	int fours = 0;
+    	for(int element : nums){
+    		if(element == 1){
+    			ones++;
+    		} if(element == 4){
+    			fours++;
+    		}
+    	}if(ones > fours){
+    		return true;
+    	}
         return false;
     }
     
@@ -192,7 +228,13 @@ public class Exercises {
     * noTriples([1, 1, 1, 2, 2, 2, 1]) → false
     */
     public boolean noTriples(int[] nums) {
-        return false;
+    	if(nums.length > 2){
+        for(int i = 0; i < nums.length - 2; i++){
+        if(nums[i] == nums[i+1] && nums[i+1] == nums[i+2]){
+        	return false;
+        }
+        }
+        }return true;
     }
 
     /*
@@ -204,7 +246,17 @@ public class Exercises {
     * oneTwo("tcagdo") → "catdog"
     */
     public String oneTwo(String str) {
-        return null;
+    	if(str.length() < 3){
+    	    return "";
+    	  } 
+    	  int repeats = str.length() / 3;
+    	  String newStr = "";
+    	  for(int i = 1; i <= repeats; i++){
+    	    newStr += (str.substring(1,3));
+    	    newStr += (str.substring(0,1));
+    	    str = str.substring(3, str.length());
+    	  } 
+    	  return newStr;
     }
     
     /*
@@ -215,7 +267,15 @@ public class Exercises {
     * repeatSeparator("This", "And", 1) → "This"
     */
     public String repeatSeparator(String word, String sep, int count) {
-        return null;
+        
+    	String bigString = "";
+    	if(count > 0){
+    		bigString = word;
+    	}
+    	for(int i = 0; i < count - 1; i++){
+        	bigString += (sep + word);
+        }
+    	return bigString;
     }
 
     /*
@@ -225,7 +285,17 @@ public class Exercises {
     * ("Heelele") → false
     */
     public boolean stringE(String str) {
-        return false;
+    	int num  = 0;
+    	if(str.length() >=1){
+    	for(int i = 0; i < str.length(); i++){
+    		if(str.substring(i, i+1).equals("e")){
+    			num++;
+    		}
+    	}
+        if(num >= 1 && num <= 3){ 
+        	return true;
+        }
+        } return false;
     }
     
     /*
