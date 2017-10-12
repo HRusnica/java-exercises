@@ -56,3 +56,63 @@ section {
 	background-color: #FFF;
 	border-radius: 7px;
 }
+
+.top{
+	color: red;
+}
+
+.toyTable{
+	width: 100%;
+}
+img.rating {
+	width: 100px;
+}
+img.productImage{
+	width: 140px;
+	border-radius: 5px;
+	}
+tr.greyed {
+	background-color: #d9d9d9;
+}
+tr.greyed >th {
+	background: white;
+}
+.price {
+	color: red;
+}
+
+.productTiles {
+	display: inline-grid;
+	max-width: 31%;
+	grid-template-columns: 30em;
+	grid-template-rows: 15em 2em 1em 2em 1em 3em;
+	margin:2em 10em;
+}
+
+.productImage {
+	grid-row end: 2;
+}
+
+.productName {
+	grid-row: 2/3;
+	font-size: 2em
+}
+
+.manufacturer {
+	grid-row: 3/4;
+	font-size: 1em;	
+}
+
+.tilePrice {
+	grid-row: 4/5;
+	font-size: 2em; 
+}
+
+.weight {
+	grid-row: 5/6;
+	font-size: 1em;
+}
+.stars {
+	grid-row: 6/7;
+	width: 8em;
+}

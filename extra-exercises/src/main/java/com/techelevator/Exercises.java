@@ -97,8 +97,7 @@ public class Exercises {
     findPermutations("A") → {"A"}
     findPermutations("ABC") → {"ABC","ACB","BAC","BCA","CAB","CBA"}
     */
-    public List<String> findPermutations(String str)
-    {            
+    public List<String> findPermutations(String str){  
         return null;
     }
 
@@ -145,6 +144,18 @@ public class Exercises {
         }else return true;
     }
 
+    public boolean makeBricks(int small, int big, int goal) {
+        if(goal == 0){
+        	return true;
+        }else if(goal >= 5 && big > 0){
+        	big --;
+        	goal -= 5;
+        	return makeBricks(small, big, goal);
+        }else if(goal >= 1 && small > 0){
+        	small--;
+        	goal -= 1;
+        	return makeBricks(small, big, goal);
+        }return false;
     /*
     CHALLENGE: Given a string, return the length of the largest "block" in the string. 
     A block is a run of adjacent chars that are the same.
