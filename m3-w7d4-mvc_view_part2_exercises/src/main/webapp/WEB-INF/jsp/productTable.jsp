@@ -1,32 +1,12 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file ="common/header.jspf" %>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Product Table View</title>
-    <link rel="stylesheet" href="css/site.css" />
-</head>
-<body>
-    <header>
-        <h1>MVC Exercises - Views Part 2: Models</h1>        
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-        </ul>
-        
-    </nav>
     <section id="main-content">
 <h1>Toy Department</h1>
     <table id="toyTable">
     <tr>
 		<th>&nbsp;</th>
 		<c:forEach items= "${products}" var="product">
-		<td><img src="img/${product.imageName}" class="productImage"/></td>
+		<td><a href="productDetail?productId=${product.productId }"><img src="img/${product.imageName}" class="productImage" id="tableImage"/></a></td>
 		</c:forEach>
 		</tr>
 		<tr>

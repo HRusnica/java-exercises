@@ -1,27 +1,18 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file ="common/header.jspf" %>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Product List View</title>
-    <link rel="stylesheet" href="css/site.css" />
-</head>
-<body>
-    <header>
-        <h1>MVC Exercises - Views Part 2: Models</h1>        
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-        </ul>
-        
-    </nav>
     <section id="main-content">
-
-       
+	<c:forEach items= "${products}" var="product">
+		<div class="productList">
+		<a href="productDetail?productId=${product.productId }"><img src="img/${product.imageName}" class="productImage" id="listImage"/></a>
+		<h1 class="name" id="listName"><c:out value="${product.name}"/><span class="top"> <c:out value="${product.topSeller? 'BEST SELLER!' : '' }" /></span></h1>
+		<p class="manufacturer" id="listManufacturer">by <c:out value="${product.manufacturer}"/></p>
+		<p class="price" id="listPrice"><Strong>$<c:out value="${product.price}" /></Strong></p>
+		<p class="weight" id="listWeight"><Strong>Weight </Strong><c:out value="${product.weightInLbs}" /></p>
+		<fmt:formatNumber maxFractionDigits="0" value="${product.averageRating}" var="formattedRating"/>
+		<img src="img/${formattedRating}-star.png" class ="rating" id="listRating"/>
+		</div>
+		<hr>
+		</c:forEach>
 
     </section>
 </body>
