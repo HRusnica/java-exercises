@@ -1,0 +1,28 @@
+
+body {
+    background-color: LightSkyBlue;
+    width: 90%;
+    font-family: sans-serif;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.centered {
+	text-align: center;
+}
+
+
+#submit-button {
+	margin-left: 225px;
+}
+
+.stars {
+	width: 100px;
+}
