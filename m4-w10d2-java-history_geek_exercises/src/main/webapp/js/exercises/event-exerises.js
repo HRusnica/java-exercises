@@ -14,5 +14,18 @@ $(document).ready(function () {
 		var subtotal = $('#subtotal > .price').text().substring(1);
 		$('#grandtotal > .price').text('$' + (parseFloat($(this).attr('data-cost'))+parseFloat(subtotal)));
 	});
+	
+	$(document).on('keydown', function(event) {
+	
+		if(event.key === 'ArrowDown'){
+		$('.ship').attr("id");
+		var y = 0;
+		y += 1;
+		('.ship').remove();
+		('#row_'+y+'_column_x').addClass('.ship');
+		}
+		
+		
+	});
 
 });
